@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LICORERÍA PREMIUM | Delivery 24 Horas</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:#0f172a;
+color:white;
+}
+
+header{
+background:
+linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1?w=1600');
+background-size:cover;
+background-position:center;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.hero h1{
+font-size:4rem;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:1.2rem;
+margin-bottom:25px;
+}
+
+.btn{
+display:inline-block;
+padding:15px 30px;
+background:#f59e0b;
+color:#000;
+text-decoration:none;
+font-weight:bold;
+border-radius:50px;
+transition:.3s;
+}
+
+.btn:hover{
+transform:translateY(-3px);
+}
+
+section{
+max-width:1200px;
+margin:auto;
+padding:80px 20px;
+}
+
+.title{
+text-align:center;
+margin-bottom:50px;
+}
+
+.title h2{
+font-size:2.5rem;
+color:#f59e0b;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.card{
+background:#1e293b;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,.3);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+.card img{
+width:100%;
+height:250px;
+object-fit:cover;
+}
+
+.content{
+padding:20px;
+}
+
+.precio{
+font-size:1.5rem;
+font-weight:bold;
+color:#f59e0b;
+margin:10px 0;
+}
+
+.buy{
+display:block;
+text-align:center;
+background:#25D366;
+padding:12px;
+border-radius:10px;
+text-decoration:none;
+color:white;
+font-weight:bold;
+margin-top:15px;
+}
+
+.info{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.box{
+background:#1e293b;
+padding:25px;
+border-radius:15px;
+text-align:center;
+}
+
+.promocion{
+background:linear-gradient(135deg,#f59e0b,#dc2626);
+padding:40px;
+border-radius:20px;
+text-align:center;
+}
+
+.promocion h2{
+font-size:3rem;
+}
+
+.contact{
+background:#1e293b;
+padding:40px;
+border-radius:20px;
+text-align:center;
+}
+
+.contact p{
+margin:10px 0;
+}
+
+footer{
+background:#020617;
+text-align:center;
+padding:30px;
+}
+
+.whatsapp{
+position:fixed;
+right:20px;
+bottom:20px;
+width:65px;
+height:65px;
+background:#25D366;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:30px;
+text-decoration:none;
+color:white;
+box-shadow:0 5px 15px rgba(0,0,0,.4);
+z-index:999;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:2.5rem;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="hero">
+
+<h1>🥃 LICORERÍA PREMIUM</h1>
+
+<p>
+Whisky, Ron, Vodka, Cervezas, Vinos y mucho más.
+Delivery rápido para tus reuniones y celebraciones.
+</p>
+
+<a href="#productos" class="btn">
+Ver Catálogo
+</a>
+
+</div>
+
+</header>
+
+<section>
+
+<div class="title">
+<h2>🚚 Nuestros Servicios</h2>
+</div>
+
+<div class="info">
+
+<div class="box">
+⚡ Delivery Rápido
+</div>
+
+<div class="box">
+🕒 Atención Extendida
+</div>
+
+<div class="box">
+🎉 Promociones Especiales
+</div>
+
+<div class="box">
+📱 Pedidos por WhatsApp
+</div>
+
+</div>
+
+</section>
+
+<section id="productos">
+
+<div class="title">
+<h2>🍾 Productos Destacados</h2>
+</div>
+
+<div class="grid">
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=800">
+
+<div class="content">
+
+<h3>Whisky Premium</h3>
+
+<p>Botella 750 ml</p>
+
+<div class="precio">
+S/ 89.90
+</div>
+
+<a
+class="buy"
+href="https://wa.me/51999999999?text=Hola,%20quiero%20pedir%20Whisky%20Premium"
+target="_blank">
+
+Pedir por WhatsApp
+
+</a>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1582819509237-ded8f2e2f1a7?w=800">
+
+<div class="content">
+
+<h3>Ron Añejo</h3>
+
+<p>Botella 750 ml</p>
+
+<div class="precio">
+S/ 69.90
+</div>
+
+<a
+class="buy"
+href="https://wa.me/51999999999?text=Hola,%20quiero%20pedir%20Ron%20Añejo"
+target="_blank">
+
+Pedir por WhatsApp
+
+</a>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1609951651556-5334e2706168?w=800">
+
+<div class="content">
+
+<h3>Vodka Premium</h3>
+
+<p>Botella 750 ml</p>
+
+<div class="precio">
+S/ 79.90
+</div>
+
+<a
+class="buy"
+href="https://wa.me/51999999999?text=Hola,%20quiero%20pedir%20Vodka%20Premium"
+target="_blank">
+
+Pedir por WhatsApp
+
+</a>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800">
+
+<div class="content">
+
+<h3>Pack Cervezas</h3>
+
+<p>6 unidades</p>
+
+<div class="precio">
+S/ 32.90
+</div>
+
+<a
+class="buy"
+href="https://wa.me/51999999999?text=Hola,%20quiero%20pedir%20Pack%20de%20Cervezas"
+target="_blank">
+
+Pedir por WhatsApp
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="promocion">
+
+<h2>🔥 PROMOCIÓN DE LA SEMANA</h2>
+
+<p>
+Compra 2 botellas seleccionadas y recibe descuento especial.
+</p>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="title">
+<h2>📍 Contacto</h2>
+</div>
+
+<div class="contact">
+
+<p>📱 WhatsApp: +51 999 999 999</p>
+
+<p>📧 ventas@licoreriapremium.com</p>
+
+<p>🕒 Horario: 10:00 AM - 11:00 PM</p>
+
+<p>🚚 Delivery disponible</p>
+
+<br>
+
+<a
+class="btn"
+href="https://wa.me/51999999999?text=Hola,%20deseo%20hacer%20un%20pedido"
+target="_blank">
+
+Realizar Pedido
+
+</a>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 Licorería Premium - Todos los derechos reservados.
+
+</footer>
+
+<a
+class="whatsapp"
+href="https://wa.me/51999999999"
+target="_blank">
+
+💬
+
+</a>
+
+</body>
+</html>
