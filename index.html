@@ -1,431 +1,701 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LICORERÍA PREMIUM | Delivery 24 Horas Bebidas y Licores</title>
+    
+    <!-- SEO Local Avanzado -->
+    <meta name="description" content="Licorería Premium en Trujillo. Venta y delivery express de whisky, ron, vodka, cervezas y vinos seleccionados. Tus bebidas listas y heladas en la puerta de tu casa.">
+    
+    <!-- Fuentes Modernas -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-<title>LICORERÍA PREMIUM | Delivery 24 Horas</title>
+    <style>
+        :root {
+            --bg-deep: #020617;
+            --bg-surface: #0f172a;
+            --bg-card: #1e293b;
+            --accent: #f59e0b;
+            --accent-glow: rgba(245, 158, 11, 0.15);
+            --whatsapp: #25D366;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
 
-<style>
+        html {
+            scroll-behavior: smooth;
+        }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
+        body {
+            background: var(--bg-deep);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 80px;
+        }
 
-html{
-scroll-behavior:smooth;
-}
+        /* --- GLOW BACKGROUND DECORATION --- */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 75%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(245,158,11,0.08) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
 
-body{
-background:#0f172a;
-color:white;
-}
+        /* --- BARRA DE NAVEGACIÓN (NAVBAR) --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 8%;
+        }
 
-header{
-background:
-linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
-url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1?w=1600');
-background-size:cover;
-background-position:center;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:20px;
-}
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
 
-.hero h1{
-font-size:4rem;
-margin-bottom:15px;
-}
+        .navbar .logo span {
+            color: var(--accent);
+        }
 
-.hero p{
-font-size:1.2rem;
-margin-bottom:25px;
-}
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
 
-.btn{
-display:inline-block;
-padding:15px 30px;
-background:#f59e0b;
-color:#000;
-text-decoration:none;
-font-weight:bold;
-border-radius:50px;
-transition:.3s;
-}
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
 
-.btn:hover{
-transform:translateY(-3px);
-}
+        .nav-links a:hover {
+            color: var(--accent);
+        }
 
-section{
-max-width:1200px;
-margin:auto;
-padding:80px 20px;
-}
+        /* --- HERO SECTION --- */
+        header {
+            background: linear-gradient(180deg, rgba(2, 6, 23, 0.4) 0%, var(--bg-deep) 100%),
+                        url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1?w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 85vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
 
-.title{
-text-align:center;
-margin-bottom:50px;
-}
+        .hero {
+            max-width: 850px;
+            animation: heroFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-.title h2{
-font-size:2.5rem;
-color:#f59e0b;
-}
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+        }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
-}
+        .hero h1 span {
+            background: linear-gradient(135deg, #fff 30%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-.card{
-background:#1e293b;
-border-radius:20px;
-overflow:hidden;
-box-shadow:0 5px 15px rgba(0,0,0,.3);
-transition:.3s;
-}
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-weight: 400;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-.card:hover{
-transform:translateY(-8px);
-}
+        /* --- BOTONES MODERNOS --- */
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            background: var(--accent);
+            color: #020617;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: var(--transition);
+            box-shadow: 0 8px 30px rgba(245, 158, 11, 0.3);
+            letter-spacing: 0.3px;
+        }
 
-.card img{
-width:100%;
-height:250px;
-object-fit:cover;
-}
+        .btn:hover {
+            background: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 255, 255, 0.2);
+        }
 
-.content{
-padding:20px;
-}
+        /* --- COMPONENTES GLOBALES --- */
+        section {
+            max-width: 1200px;
+            margin: auto;
+            padding: 100px 20px;
+        }
 
-.precio{
-font-size:1.5rem;
-font-weight:bold;
-color:#f59e0b;
-margin:10px 0;
-}
+        .title {
+            text-align: center;
+            margin-bottom: 65px;
+        }
 
-.buy{
-display:block;
-text-align:center;
-background:#25D366;
-padding:12px;
-border-radius:10px;
-text-decoration:none;
-color:white;
-font-weight:bold;
-margin-top:15px;
-}
+        .title h2 {
+            font-size: 2.8rem;
+            color: var(--text-main);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
 
-.info{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
+        .title p {
+            color: var(--text-muted);
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
 
-.box{
-background:#1e293b;
-padding:25px;
-border-radius:15px;
-text-align:center;
-}
+        /* --- SECCIÓN SERVICIOS --- */
+        .info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
 
-.promocion{
-background:linear-gradient(135deg,#f59e0b,#dc2626);
-padding:40px;
-border-radius:20px;
-text-align:center;
-}
+        .box {
+            background: var(--bg-surface);
+            padding: 45px 30px;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: var(--transition);
+        }
 
-.promocion h2{
-font-size:3rem;
-}
+        .box:hover {
+            transform: translateY(-8px);
+            background: var(--bg-card);
+            border-color: rgba(245, 158, 11, 0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
 
-.contact{
-background:#1e293b;
-padding:40px;
-border-radius:20px;
-text-align:center;
-}
+        .box-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
 
-.contact p{
-margin:10px 0;
-}
+        .box h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
 
-footer{
-background:#020617;
-text-align:center;
-padding:30px;
-}
+        .box p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
 
-.whatsapp{
-position:fixed;
-right:20px;
-bottom:20px;
-width:65px;
-height:65px;
-background:#25D366;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:30px;
-text-decoration:none;
-color:white;
-box-shadow:0 5px 15px rgba(0,0,0,.4);
-z-index:999;
-}
+        /* --- SECCIÓN CATÁLOGO (TARJETAS) --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+        }
 
-@media(max-width:768px){
+        .card {
+            background: var(--bg-surface);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            position: relative;
+        }
 
-.hero h1{
-font-size:2.5rem;
-}
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(245, 158, 11, 0.1);
+            border-color: rgba(245, 158, 11, 0.3);
+        }
 
-}
+        /* Etiqueta flotante */
+        .badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(2, 6, 23, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            color: var(--accent);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 10;
+        }
 
-</style>
+        .img-container {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            background: #090d16;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .card:hover .img-container img {
+            transform: scale(1.08);
+            filter: brightness(1.05);
+        }
+
+        .content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        .content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .precio-box {
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+
+        .precio {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .buy {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            background: var(--whatsapp);
+            padding: 16px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
+        }
+
+        .buy:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            filter: brightness(1.1);
+        }
+
+        /* --- SECCIÓN PROMOCIONAL (BANNER) --- */
+        .promocion {
+            background: linear-gradient(135deg, #1e1b4b 0%, #311005 100%);
+            padding: 80px 40px;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            border: 1px solid rgba(245, 158, 11, 0.15);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promocion::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -30%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(239,68,68,0.1) 0%, rgba(0,0,0,0) 70%);
+            pointer-events: none;
+        }
+
+        .promocion h2 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+
+        .promocion p {
+            font-size: 1.3rem;
+            max-width: 650px;
+            margin: 0 auto 35px auto;
+            color: #e2e8f0;
+            font-weight: 300;
+        }
+
+        /* --- CONTACTO & MAPA SPLIT --- */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+        }
+
+        .contact {
+            background: var(--bg-surface);
+            padding: 50px;
+            border-radius: var(--radius-lg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .contact h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            letter-spacing: -0.5px;
+        }
+
+        .contact p {
+            margin: 15px 0;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #e2e8f0;
+        }
+
+        .contact p strong {
+            color: var(--accent);
+            width: 140px;
+            display: inline-block;
+        }
+
+        .contact .btn {
+            align-self: flex-start;
+            margin-top: 25px;
+        }
+
+        .map-box {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            min-height: 400px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            border: none;
+            filter: grayscale(0.3) invert(0.9) contrast(1.2); /* Estilo de mapa oscuro premium */
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #020617;
+            color: #475569;
+            text-align: center;
+            padding: 50px 20px;
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        footer .legal {
+            font-size: 0.8rem;
+            max-width: 700px;
+            margin: 15px auto 0 auto;
+            color: #334155;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        /* --- WHATSAPP FLOTANTE --- */
+        .whatsapp-float {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            width: 65px;
+            height: 65px;
+            background: var(--whatsapp);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 34px;
+            text-decoration: none;
+            color: white;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        /* --- ANIMACIONES --- */
+        @keyframes heroFadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- MEDIA QUERIES --- */
+        @media(max-width:968px){
+            body { padding-top: 70px; }
+            .navbar { padding: 15px 6%; }
+            .nav-links { display: none; } /* Oculto para mobile por simplicidad limpia */
+            .hero h1 { font-size: 2.8rem; }
+            .hero p { font-size: 1.1rem; }
+            .title h2 { font-size: 2.2rem; }
+            .promocion h2 { font-size: 2.2rem; }
+            .contact-container { grid-template-columns: 1fr; }
+            .contact { padding: 35px 25px; }
+            .contact .btn { align-self: fill; width: 100%; text-align: center; }
+        }
+    </style>
 </head>
 
 <body>
 
-<header>
-
-<div class="hero">
-
-<h1>🥃 LICORERÍA PREMIUM</h1>
-
-<p>
-Whisky, Ron, Vodka, Cervezas, Vinos y mucho más.
-Delivery rápido para tus reuniones y celebraciones.
-</p>
-
-<a href="#productos" class="btn">
-Ver Catálogo
-</a>
-
-</div>
-
-</header>
-
-<section>
-
-<div class="title">
-<h2>🚚 Nuestros Servicios</h2>
-</div>
-
-<div class="info">
-
-<div class="box">
-⚡ Delivery Rápido
-</div>
-
-<div class="box">
-🕒 Atención Extendida
-</div>
-
-<div class="box">
-🎉 Promociones Especiales
-</div>
-
-<div class="box">
-📱 Pedidos por WhatsApp
-</div>
-
-</div>
-
-</section>
-
-<section id="productos">
-
-<div class="title">
-<h2>🍾 Productos Destacados</h2>
-</div>
-
-<div class="grid">
-
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=800">
-
-<div class="content">
-
-<h3>Whisky Premium</h3>
-
-<p>Botella 750 ml</p>
-
-<div class="precio">
-S/ 89.90
-</div>
-
-<a
-class="buy"
-href="https://wa.me/51999999999?text=Hola,%20quiero%20pedir%20Whisky%20Premium"
-target="_blank">
-
-Pedir por WhatsApp
-
-</a>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1582819509237-ded8f2e2f1a7?w=800">
-
-<div class="content">
-
-<h3>Ron Añejo</h3>
-
-<p>Botella 750 ml</p>
-
-<div class="precio">
-S/ 69.90
-</div>
-
-<a
-class="buy"
-href="https://wa.me/51999999999?text=Hola,%20quiero%20pedir%20Ron%20Añejo"
-target="_blank">
-
-Pedir por WhatsApp
-
-</a>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1609951651556-5334e2706168?w=800">
-
-<div class="content">
-
-<h3>Vodka Premium</h3>
-
-<p>Botella 750 ml</p>
-
-<div class="precio">
-S/ 79.90
-</div>
-
-<a
-class="buy"
-href="https://wa.me/51999999999?text=Hola,%20quiero%20pedir%20Vodka%20Premium"
-target="_blank">
-
-Pedir por WhatsApp
-
-</a>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800">
-
-<div class="content">
-
-<h3>Pack Cervezas</h3>
-
-<p>6 unidades</p>
-
-<div class="precio">
-S/ 32.90
-</div>
-
-<a
-class="buy"
-href="https://wa.me/51999999999?text=Hola,%20quiero%20pedir%20Pack%20de%20Cervezas"
-target="_blank">
-
-Pedir por WhatsApp
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section>
-
-<div class="promocion">
-
-<h2>🔥 PROMOCIÓN DE LA SEMANA</h2>
-
-<p>
-Compra 2 botellas seleccionadas y recibe descuento especial.
-</p>
-
-</div>
-
-</section>
-
-<section>
-
-<div class="title">
-<h2>📍 Contacto</h2>
-</div>
-
-<div class="contact">
-
-<p>📱 WhatsApp: +51 999 999 999</p>
-
-<p>📧 ventas@licoreriapremium.com</p>
-
-<p>🕒 Horario: 10:00 AM - 11:00 PM</p>
-
-<p>🚚 Delivery disponible</p>
-
-<br>
-
-<a
-class="btn"
-href="https://wa.me/51999999999?text=Hola,%20deseo%20hacer%20un%20pedido"
-target="_blank">
-
-Realizar Pedido
-
-</a>
-
-</div>
-
-</section>
-
-<footer>
-
-© 2026 Licorería Premium - Todos los derechos reservados.
-
-</footer>
-
-<a
-class="whatsapp"
-href="https://wa.me/51999999999"
-target="_blank">
-
-💬
-
-</a>
+    <!-- Barra de Navegación Fija -->
+    <nav class="navbar">
+        <a href="#" class="logo">LICORERÍA <span>PREMIUM</span></a>
+        <ul class="nav-links">
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#productos">Catálogo</a></li>
+            <li><a href="#promociones">Promociones</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hilo Conductor Principal (Hero) -->
+    <header>
+        <div class="hero">
+            <h1><span>Tus Bebidas Favoritas</span><br>Heladas y en Minutos</h1>
+            <p>La selección más exclusiva de Whisky, Ron, Vodka, Vinos y Cervezas con el sistema de entrega a domicilio más rápido de Trujillo. Atendemos todas tus reuniones.</p>
+            <a href="#productos" class="btn">Explorar Catálogo</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Sección de Atributos de Valor -->
+        <section id="servicios">
+            <div class="title">
+                <h2>¿Por qué elegirnos?</h2>
+                <p>Nos tomamos tus celebraciones con total seriedad.</p>
+            </div>
+            <div class="info">
+                <div class="box">
+                    <span class="box-icon" aria-hidden="true">⚡</span>
+                    <h3>Delivery Express</h3>
+                    <p>Llegamos a tu ubicación de forma segura y en tiempo récord.</p>
+                </div>
+                <div class="box">
+                    <span class="box-icon" aria-hidden="true">🕒</span>
+                    <h3>Atención Nocturna</h3>
+                    <p>Disponibilidad extendida para que la fiesta nunca se detenga.</p>
+                </div>
+                <div class="box">
+                    <span class="box-icon" aria-hidden="true">❄️</span>
+                    <h3>Temperatura Ideal</h3>
+                    <p>Tus cervezas y complementos llegan perfectamente helados.</p>
+                </div>
+                <div class="box">
+                    <span class="box-icon" aria-hidden="true">📱</span>
+                    <h3>Pedido Simple</h3>
+                    <p>Pide directamente por WhatsApp sin registros engorrosos.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Catálogo de Productos Destacados -->
+        <section id="productos">
+            <div class="title">
+                <h2>Licores y Bebidas Destacadas</h2>
+                <p>Productos 100% originales listos para despacho.</p>
+            </div>
+            <div class="grid">
+
+                <!-- Producto 1: Whisky -->
+                <article class="card">
+                    <span class="badge">El Más Vendido</span>
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1527061011665-3652c757a4d4?w=600&q=80" alt="Botella de Whisky Escocés de Reserva Especial">
+                    </div>
+                    <div class="content">
+                        <h3>Whisky Escocés Etiqueta Negra</h3>
+                        <p>Botella 750 ml. Destilado premium madurado en barricas de roble seleccionado, con notas ahumadas profundas.</p>
+                        <div class="precio-box">
+                            <span class="precio">S/ 89.90</span>
+                        </div>
+                        <a class="buy" href="https://wa.me/51999999999?text=Hola,%20quiero%20pedir%20Whisky%20Escocés%20Etiqueta%20Negra" target="_blank" rel="noopener">
+                            <span>💬</span> Pedir por WhatsApp
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Producto 2: Ron -->
+                <article class="card">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1614313511387-14fe6c4f3c7d?w=600&q=80" alt="Botella de Ron Añejo Solera Reserva">
+                    </div>
+                    <div class="content">
+                        <h3>Ron Añejo Selección Especial</h3>
+                        <p>Botella 750 ml. Extraordinario cuerpo y sedosidad con notas sutiles de madera tostada, vainilla y frutos secos.</p>
+                        <div class="precio-box">
+                            <span class="precio">S/ 69.90</span>
+                        </div>
+                        <a class="buy" href="https://wa.me/51999999999?text=Hola,%20quiero%20pedir%20Ron%20Añejo%20Selección%20Especial" target="_blank" rel="noopener">
+                            <span>💬</span> Pedir por WhatsApp
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Producto 3: Vodka -->
+                <article class="card">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1592751490239-e91176b6e3f5?w=600&q=80" alt="Botella de Vodka Importado Premium">
+                    </div>
+                    <div class="content">
+                        <h3>Vodka Triple Destilado</h3>
+                        <p>Botella 750 ml. Pureza y claridad cristalina inigualable, filtrado al carbón. Perfecto para la coctelería exigente.</p>
+                        <div class="precio-box">
+                            <span class="precio">S/ 79.90</span>
+                        </div>
+                        <a class="buy" href="https://wa.me/51999999999?text=Hola,%20quiero%20pedir%20Vodka%20Triple%20Destilado" target="_blank" rel="noopener">
+                            <span>💬</span> Pedir por WhatsApp
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Producto 4: Cerveza -->
+                <article class="card">
+                    <span class="badge">Heladas Garantizadas</span>
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1566633806327-68e152aaf26d?w=600&q=80" alt="Six pack de cervezas premium heladas">
+                    </div>
+                    <div class="content">
+                        <h3>Pack Cervezas Selectas</h3>
+                        <p>Six-Pack de 330ml. Cervezas premium tipo lager heladas a la perfección, listas para abrir y disfrutar.</p>
+                        <div class="precio-box">
+                            <span class="precio">S/ 32.90</span>
+                        </div>
+                        <a class="buy" href="https://wa.me/51999999999?text=Hola,%20quiero%20pedir%20Pack%20Cervezas%20Selectas" target="_blank" rel="noopener">
+                            <span>💬</span> Pedir por WhatsApp
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Banner Promocional -->
+        <section id="promociones">
+            <div class="promocion">
+                <h2>🔥 COMBO PLAYEROS Y REUNIONES</h2>
+                <p>Arma tus previas con ventaja. Por la compra de 2 botellas seleccionadas de nuestro catálogo, te incluimos el hielo y los complementos con un descuento inmediato.</p>
+                <a href="https://wa.me/51999999999?text=Hola,%20deseo%20consultar%20las%20promociones%20de%20la%20semana" class="btn" target="_blank" rel="noopener">Consultar Combos</a>
+            </div>
+        </section>
+
+        <!-- Zona de Ubicación y Contacto -->
+        <section id="contacto">
+            <div class="title">
+                <h2>Canales de Atención</h2>
+                <p>Despachamos desde el centro estratégico para cubrir todo Trujillo.</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact">
+                    <h3>¿Qué vas a pedir hoy?</h3>
+                    <p><strong>📱 WhatsApp:</strong> +51 999 999 999</p>
+                    <p><strong>📧 Correo:</strong> ventas@licoreriapremium.com</p>
+                    <p><strong>🕒 Central Delivery:</strong> 10:00 AM - 11:00 PM</p>
+                    <p><strong>📍 Zona Base:</strong> Centro Histórico, Trujillo, Perú</p>
+                    <a class="btn" href="https://wa.me/51999999999?text=Hola,%20deseo%20hacer%20un%20pedido" target="_blank" rel="noopener">
+                        Pedir Ahora Mismo
+                    </a>
+                </div>
+                <div class="map-box">
+                    <!-- Mapa estilizado en modo oscuro por CSS -->
+                    <iframe 
+                        src="https://maps.google.com/maps?q=Trujillo%20Peru&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+                        allowfullscreen="" 
+                        loading="lazy"
+                        title="Mapa interactivo con la cobertura de entrega de Licoreria Premium">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Institucional y Advertencia de Ley -->
+    <footer>
+        <p>&copy; 2026 Licorería Premium. Todos los derechos reservados.</p>
+        <p class="legal">TOMAR BEBIDAS ALCOHÓLICAS EN EXCESO ES DAÑINO. PROHIBIDA LA VENTA DE BEBIDAS ALCOHÓLICAS A MENORES DE 18 AÑOS.</p>
+    </footer>
+
+    <!-- Botón Flotante Magnético de WhatsApp -->
+    <a class="whatsapp-float" href="https://wa.me/51999999999" target="_blank" rel="noopener" aria-label="Escríbenos directamente para hacer tu pedido rápido">💬</a>
 
 </body>
 </html>
