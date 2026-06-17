@@ -17,12 +17,14 @@
             --bg-surface: #0f172a;
             --bg-card: #1e293b;
             --accent: #f59e0b;
+            --accent-hover: #fbbf24;
             --accent-glow: rgba(245, 158, 11, 0.15);
             --whatsapp: #25D366;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --radius-lg: 24px;
             --radius-md: 16px;
+            --radius-sm: 8px;
             --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -53,20 +55,20 @@
             left: 75%;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(245,158,11,0.08) 0%, rgba(0,0,0,0) 70%);
+            background: radial-gradient(circle, rgba(245,158,11,0.06) 0%, rgba(0,0,0,0) 70%);
             z-index: -1;
             pointer-events: none;
         }
 
-        /* --- BARRA DE NAVEGACIÓN (NAVBAR) --- */
+        /* --- BARRA DE NAVEGACIÓN --- */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(2, 6, 23, 0.8);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: rgba(2, 6, 23, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             z-index: 1000;
             display: flex;
@@ -107,11 +109,11 @@
 
         /* --- HERO SECTION --- */
         header {
-            background: linear-gradient(180deg, rgba(2, 6, 23, 0.4) 0%, var(--bg-deep) 100%),
+            background: linear-gradient(180deg, rgba(2, 6, 23, 0.5) 0%, var(--bg-deep) 100%),
                         url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1?w=1600&q=80');
             background-size: cover;
             background-position: center;
-            height: 85vh;
+            height: 80vh;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -143,7 +145,6 @@
             font-size: 1.3rem;
             color: var(--text-muted);
             margin-bottom: 40px;
-            font-weight: 400;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
@@ -158,6 +159,8 @@
             text-decoration: none;
             font-weight: 700;
             border-radius: 50px;
+            border: none;
+            cursor: pointer;
             transition: var(--transition);
             box-shadow: 0 8px 30px rgba(245, 158, 11, 0.3);
             letter-spacing: 0.3px;
@@ -169,16 +172,44 @@
             box-shadow: 0 12px 35px rgba(255, 255, 255, 0.2);
         }
 
+        /* --- FILTROS DE CATEGORÍAS --- */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 45px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--bg-surface);
+            color: var(--text-muted);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 10px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent);
+            color: #020617;
+            border-color: var(--accent);
+            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.2);
+        }
+
         /* --- COMPONENTES GLOBALES --- */
         section {
             max-width: 1200px;
             margin: auto;
-            padding: 100px 20px;
+            padding: 80px 20px;
         }
 
         .title {
             text-align: center;
-            margin-bottom: 65px;
+            margin-bottom: 55px;
         }
 
         .title h2 {
@@ -197,13 +228,13 @@
         /* --- SECCIÓN SERVICIOS --- */
         .info {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
         }
 
         .box {
             background: var(--bg-surface);
-            padding: 45px 30px;
+            padding: 40px 25px;
             border-radius: var(--radius-lg);
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.03);
@@ -211,21 +242,21 @@
         }
 
         .box:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
             background: var(--bg-card);
             border-color: rgba(245, 158, 11, 0.2);
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
         .box-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
             display: block;
         }
 
         .box h3 {
-            font-size: 1.3rem;
-            margin-bottom: 12px;
+            font-size: 1.25rem;
+            margin-bottom: 10px;
             font-weight: 600;
         }
 
@@ -238,7 +269,7 @@
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 35px;
+            gap: 30px;
         }
 
         .card {
@@ -253,18 +284,21 @@
             position: relative;
         }
 
-        .card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 25px 50px rgba(245, 158, 11, 0.1);
-            border-color: rgba(245, 158, 11, 0.3);
+        .card.hidden {
+            display: none;
         }
 
-        /* Etiqueta flotante */
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(245, 158, 11, 0.1);
+            border-color: rgba(245, 158, 11, 0.2);
+        }
+
         .badge {
             position: absolute;
             top: 15px;
             left: 15px;
-            background: rgba(2, 6, 23, 0.75);
+            background: rgba(2, 6, 23, 0.8);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             border: 1px solid rgba(245, 158, 11, 0.4);
@@ -278,7 +312,7 @@
 
         .img-container {
             width: 100%;
-            height: 280px;
+            height: 260px;
             overflow: hidden;
             background: #090d16;
         }
@@ -291,22 +325,21 @@
         }
 
         .card:hover .img-container img {
-            transform: scale(1.08);
-            filter: brightness(1.05);
+            transform: scale(1.06);
         }
 
         .content {
-            padding: 30px;
+            padding: 25px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
         }
 
         .content h3 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: 8px;
             font-weight: 700;
-            letter-spacing: -0.3px;
+            color: var(--text-main);
         }
 
         .content p {
@@ -318,35 +351,74 @@
 
         .precio-box {
             display: flex;
-            align-items: baseline;
-            gap: 5px;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 20px;
         }
 
         .precio {
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        /* --- CONTROLES DE CANTIDAD --- */
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            background: var(--bg-deep);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 30px;
+            padding: 4px;
+        }
+
+        .quantity-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .quantity-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .quantity-value {
+            width: 35px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1rem;
         }
 
         .buy {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             background: var(--whatsapp);
-            padding: 16px;
+            padding: 14px;
             border-radius: var(--radius-md);
             text-decoration: none;
             color: white;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: var(--transition);
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
+            border: none;
+            cursor: pointer;
+            width: 100%;
         }
 
         .buy:hover {
-            transform: scale(1.02);
             box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
             filter: brightness(1.1);
         }
@@ -354,7 +426,7 @@
         /* --- SECCIÓN PROMOCIONAL (BANNER) --- */
         .promocion {
             background: linear-gradient(135deg, #1e1b4b 0%, #311005 100%);
-            padding: 80px 40px;
+            padding: 60px 40px;
             border-radius: var(--radius-lg);
             text-align: center;
             border: 1px solid rgba(245, 158, 11, 0.15);
@@ -363,43 +435,30 @@
             overflow: hidden;
         }
 
-        .promocion::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -30%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(239,68,68,0.1) 0%, rgba(0,0,0,0) 70%);
-            pointer-events: none;
-        }
-
         .promocion h2 {
-            font-size: 3.2rem;
+            font-size: 3rem;
             font-weight: 800;
             color: var(--accent);
-            letter-spacing: -1px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .promocion p {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             max-width: 650px;
-            margin: 0 auto 35px auto;
+            margin: 0 auto 30px auto;
             color: #e2e8f0;
-            font-weight: 300;
         }
 
         /* --- CONTACTO & MAPA SPLIT --- */
         .contact-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
         }
 
         .contact {
             background: var(--bg-surface);
-            padding: 50px;
+            padding: 40px;
             border-radius: var(--radius-lg);
             display: flex;
             flex-direction: column;
@@ -408,36 +467,35 @@
         }
 
         .contact h3 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 800;
-            margin-bottom: 25px;
-            letter-spacing: -0.5px;
+            margin-bottom: 20px;
         }
 
         .contact p {
-            margin: 15px 0;
-            font-size: 1.1rem;
+            margin: 12px 0;
+            font-size: 1.05rem;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             color: #e2e8f0;
         }
 
         .contact p strong {
             color: var(--accent);
-            width: 140px;
+            width: 130px;
             display: inline-block;
         }
 
         .contact .btn {
             align-self: flex-start;
-            margin-top: 25px;
+            margin-top: 20px;
         }
 
         .map-box {
             border-radius: var(--radius-lg);
             overflow: hidden;
-            min-height: 400px;
+            min-height: 380px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.4);
             border: 1px solid rgba(255, 255, 255, 0.03);
         }
@@ -445,9 +503,9 @@
         iframe {
             width: 100%;
             height: 100%;
-            min-height: 400px;
+            min-height: 380px;
             border: none;
-            filter: grayscale(0.3) invert(0.9) contrast(1.2); /* Estilo de mapa oscuro premium */
+            filter: grayscale(0.2) invert(0.9) contrast(1.2);
         }
 
         /* --- FOOTER --- */
@@ -455,7 +513,7 @@
             background: #020617;
             color: #475569;
             text-align: center;
-            padding: 50px 20px;
+            padding: 45px 20px;
             font-size: 0.95rem;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
@@ -474,14 +532,14 @@
             position: fixed;
             right: 30px;
             bottom: 30px;
-            width: 65px;
-            height: 65px;
+            width: 60px;
+            height: 60px;
             background: var(--whatsapp);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 34px;
+            font-size: 30px;
             text-decoration: none;
             color: white;
             box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
@@ -493,31 +551,26 @@
             transform: scale(1.1) rotate(10deg);
         }
 
-        /* --- ANIMACIONES --- */
         @keyframes heroFadeUp {
-            from { opacity: 0; transform: translateY(30px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- MEDIA QUERIES --- */
         @media(max-width:968px){
             body { padding-top: 70px; }
             .navbar { padding: 15px 6%; }
-            .nav-links { display: none; } /* Oculto para mobile por simplicidad limpia */
+            .nav-links { display: none; }
             .hero h1 { font-size: 2.8rem; }
             .hero p { font-size: 1.1rem; }
             .title h2 { font-size: 2.2rem; }
-            .promocion h2 { font-size: 2.2rem; }
             .contact-container { grid-template-columns: 1fr; }
-            .contact { padding: 35px 25px; }
-            .contact .btn { align-self: fill; width: 100%; text-align: center; }
+            .contact .btn { width: 100%; text-align: center; }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Barra de Navegación Fija -->
     <nav class="navbar">
         <a href="#" class="logo">LICORERÍA <span>PREMIUM</span></a>
         <ul class="nav-links">
@@ -528,7 +581,6 @@
         </ul>
     </nav>
 
-    <!-- Hilo Conductor Principal (Hero) -->
     <header>
         <div class="hero">
             <h1><span>Tus Bebidas Favoritas</span><br>Heladas y en Minutos</h1>
@@ -538,7 +590,6 @@
     </header>
 
     <main>
-        <!-- Sección de Atributos de Valor -->
         <section id="servicios">
             <div class="title">
                 <h2>¿Por qué elegirnos?</h2>
@@ -568,88 +619,115 @@
             </div>
         </section>
 
-        <!-- Catálogo de Productos Destacados -->
+        <!-- Sección Catálogo con Filtros -->
         <section id="productos">
             <div class="title">
                 <h2>Licores y Bebidas Destacadas</h2>
                 <p>Productos 100% originales listos para despacho.</p>
             </div>
-            <div class="grid">
 
+            <!-- Botones de Filtrado Nativos -->
+            <div class="filter-container">
+                <button class="filter-btn active" onclick="filterCategory('all')">Todos</button>
+                <button class="filter-btn" onclick="filterCategory('whisky')">Whisky</button>
+                <button class="filter-btn" onclick="filterCategory('ron')">Ron</button>
+                <button class="filter-btn" onclick="filterCategory('vodka')">Vodka</button>
+                <button class="filter-btn" onclick="filterCategory('cerveza')">Cervezas</button>
+            </div>
+
+            <div class="grid">
                 <!-- Producto 1: Whisky -->
-                <article class="card">
+                <article class="card" data-category="whisky">
                     <span class="badge">El Más Vendido</span>
                     <div class="img-container">
-                        <img src="https://images.unsplash.com/photo-1527061011665-3652c757a4d4?w=600&q=80" alt="Botella de Whisky Escocés de Reserva Especial">
+                        <img src="https://images.unsplash.com/photo-1527061011665-3652c757a4d4?w=600&q=80" alt="Botella de Whisky Escocés">
                     </div>
                     <div class="content">
                         <h3>Whisky Escocés Etiqueta Negra</h3>
-                        <p>Botella 750 ml. Destilado premium madurado en barricas de roble seleccionado, con notas ahumadas profundas.</p>
+                        <p>Botella 750 ml. Destilado premium madurado en barricas de roble seleccionado con notas ahumadas.</p>
                         <div class="precio-box">
-                            <span class="precio">S/ 89.90</span>
+                            <span class="precio" data-price="89.90">S/ 89.90</span>
+                            <div class="quantity-control">
+                                <button class="quantity-btn" onclick="changeQty('qty-w1', -1)">-</button>
+                                <span class="quantity-value" id="qty-w1">1</span>
+                                <button class="quantity-btn" onclick="changeQty('qty-w1', 1)">+</button>
+                            </div>
                         </div>
-                        <a class="buy" href="https://wa.me/51999999999?text=Hola,%20quiero%20pedir%20Whisky%20Escocés%20Etiqueta%20Negra" target="_blank" rel="noopener">
+                        <button class="buy" onclick="sendOrder('Whisky Escocés Etiqueta Negra', 'qty-w1')">
                             <span>💬</span> Pedir por WhatsApp
-                        </a>
+                        </button>
                     </div>
                 </article>
 
                 <!-- Producto 2: Ron -->
-                <article class="card">
+                <article class="card" data-category="ron">
                     <div class="img-container">
-                        <img src="https://images.unsplash.com/photo-1614313511387-14fe6c4f3c7d?w=600&q=80" alt="Botella de Ron Añejo Solera Reserva">
+                        <img src="https://images.unsplash.com/photo-1614313511387-14fe6c4f3c7d?w=600&q=80" alt="Botella de Ron Añejo">
                     </div>
                     <div class="content">
                         <h3>Ron Añejo Selección Especial</h3>
-                        <p>Botella 750 ml. Extraordinario cuerpo y sedosidad con notas sutiles de madera tostada, vainilla y frutos secos.</p>
+                        <p>Botella 750 ml. Extraordinario cuerpo con notas sutiles de madera tostada, vainilla y frutos secos.</p>
                         <div class="precio-box">
-                            <span class="precio">S/ 69.90</span>
+                            <span class="precio" data-price="69.90">S/ 69.90</span>
+                            <div class="quantity-control">
+                                <button class="quantity-btn" onclick="changeQty('qty-r1', -1)">-</button>
+                                <span class="quantity-value" id="qty-r1">1</span>
+                                <button class="quantity-btn" onclick="changeQty('qty-r1', 1)">+</button>
+                            </div>
                         </div>
-                        <a class="buy" href="https://wa.me/51999999999?text=Hola,%20quiero%20pedir%20Ron%20Añejo%20Selección%20Especial" target="_blank" rel="noopener">
+                        <button class="buy" onclick="sendOrder('Ron Añejo Selección Especial', 'qty-r1')">
                             <span>💬</span> Pedir por WhatsApp
-                        </a>
+                        </button>
                     </div>
                 </article>
 
                 <!-- Producto 3: Vodka -->
-                <article class="card">
+                <article class="card" data-category="vodka">
                     <div class="img-container">
-                        <img src="https://images.unsplash.com/photo-1592751490239-e91176b6e3f5?w=600&q=80" alt="Botella de Vodka Importado Premium">
+                        <img src="https://images.unsplash.com/photo-1592751490239-e91176b6e3f5?w=600&q=80" alt="Botella de Vodka">
                     </div>
                     <div class="content">
                         <h3>Vodka Triple Destilado</h3>
-                        <p>Botella 750 ml. Pureza y claridad cristalina inigualable, filtrado al carbón. Perfecto para la coctelería exigente.</p>
+                        <p>Botella 750 ml. Pureza cristalina inigualable, filtrado al carbón. Perfecto para la coctelería exigente.</p>
                         <div class="precio-box">
-                            <span class="precio">S/ 79.90</span>
+                            <span class="precio" data-price="79.90">S/ 79.90</span>
+                            <div class="quantity-control">
+                                <button class="quantity-btn" onclick="changeQty('qty-v1', -1)">-</button>
+                                <span class="quantity-value" id="qty-v1">1</span>
+                                <button class="quantity-btn" onclick="changeQty('qty-v1', 1)">+</button>
+                            </div>
                         </div>
-                        <a class="buy" href="https://wa.me/51999999999?text=Hola,%20quiero%20pedir%20Vodka%20Triple%20Destilado" target="_blank" rel="noopener">
+                        <button class="buy" onclick="sendOrder('Vodka Triple Destilado', 'qty-v1')">
                             <span>💬</span> Pedir por WhatsApp
-                        </a>
+                        </button>
                     </div>
                 </article>
 
                 <!-- Producto 4: Cerveza -->
-                <article class="card">
+                <article class="card" data-category="cerveza">
                     <span class="badge">Heladas Garantizadas</span>
                     <div class="img-container">
-                        <img src="https://images.unsplash.com/photo-1566633806327-68e152aaf26d?w=600&q=80" alt="Six pack de cervezas premium heladas">
+                        <img src="https://images.unsplash.com/photo-1566633806327-68e152aaf26d?w=600&q=80" alt="Six pack de cervezas heladas">
                     </div>
                     <div class="content">
                         <h3>Pack Cervezas Selectas</h3>
-                        <p>Six-Pack de 330ml. Cervezas premium tipo lager heladas a la perfección, listas para abrir y disfrutar.</p>
+                        <p>Six-Pack de 330ml. Cervezas premium tipo lager heladas a la perfección, listas para abrir.</p>
                         <div class="precio-box">
-                            <span class="precio">S/ 32.90</span>
+                            <span class="precio" data-price="32.90">S/ 32.90</span>
+                            <div class="quantity-control">
+                                <button class="quantity-btn" onclick="changeQty('qty-c1', -1)">-</button>
+                                <span class="quantity-value" id="qty-c1">1</span>
+                                <button class="quantity-btn" onclick="changeQty('qty-c1', 1)">+</button>
+                            </div>
                         </div>
-                        <a class="buy" href="https://wa.me/51999999999?text=Hola,%20quiero%20pedir%20Pack%20Cervezas%20Selectas" target="_blank" rel="noopener">
+                        <button class="buy" onclick="sendOrder('Pack Cervezas Selectas', 'qty-c1')">
                             <span>💬</span> Pedir por WhatsApp
-                        </a>
+                        </button>
                     </div>
                 </article>
-
             </div>
         </section>
 
-        <!-- Banner Promocional -->
         <section id="promociones">
             <div class="promocion">
                 <h2>🔥 COMBO PLAYEROS Y REUNIONES</h2>
@@ -658,7 +736,6 @@
             </div>
         </section>
 
-        <!-- Zona de Ubicación y Contacto -->
         <section id="contacto">
             <div class="title">
                 <h2>Canales de Atención</h2>
@@ -676,26 +753,66 @@
                     </a>
                 </div>
                 <div class="map-box">
-                    <!-- Mapa estilizado en modo oscuro por CSS -->
                     <iframe 
                         src="https://maps.google.com/maps?q=Trujillo%20Peru&t=&z=14&ie=UTF8&iwloc=&output=embed" 
                         allowfullscreen="" 
                         loading="lazy"
-                        title="Mapa interactivo con la cobertura de entrega de Licoreria Premium">
+                        title="Mapa de cobertura de entrega">
                     </iframe>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer Institucional y Advertencia de Ley -->
     <footer>
         <p>&copy; 2026 Licorería Premium. Todos los derechos reservados.</p>
         <p class="legal">TOMAR BEBIDAS ALCOHÓLICAS EN EXCESO ES DAÑINO. PROHIBIDA LA VENTA DE BEBIDAS ALCOHÓLICAS A MENORES DE 18 AÑOS.</p>
     </footer>
 
-    <!-- Botón Flotante Magnético de WhatsApp -->
-    <a class="whatsapp-float" href="https://wa.me/51999999999" target="_blank" rel="noopener" aria-label="Escríbenos directamente para hacer tu pedido rápido">💬</a>
+    <a class="whatsapp-float" href="https://wa.me/51999999999" target="_blank" rel="noopener" aria-label="Escríbenos para hacer tu pedido rápido">💬</a>
 
+    <script>
+        // --- MOTOR DE FILTRADO DE CATEGORÍAS ---
+        function filterCategory(category) {
+            // Actualizar estados visuales de los botones
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Filtrar las tarjetas de productos
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        // --- SISTEMA DE CONTROL DE CANTIDADES ---
+        function changeQty(elementId, delta) {
+            const qtyElement = document.getElementById(elementId);
+            let currentQty = parseInt(qtyElement.innerText);
+            currentQty += delta;
+            if (currentQty < 1) currentQty = 1; // El mínimo siempre será 1 unidad
+            qtyElement.innerText = currentQty;
+        }
+
+        // --- PROCESADOR DE ENVIOS DINÁMICOS A WHATSAPP ---
+        function sendOrder(productName, qtyElementId) {
+            const quantity = document.getElementById(qtyElementId).innerText;
+            const phoneNumber = "51999999999";
+            
+            // Creación del mensaje estructurado y codificado de forma limpia para URLs
+            const message = `Hola Licorería Premium, deseo realizar un pedido:\n\n` +
+                            `📦 Producto: ${productName}\n` +
+                            `🔢 Cantidad: ${quantity} unidad(es)\n\n` +
+                            `Por favor, confirmar disponibilidad para despacho express inmediato.`;
+            
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank', 'noopener');
+        }
+    </script>
 </body>
 </html>
